@@ -1,4 +1,4 @@
-package nyc.c4q.HW09_03.util;
+package nyc.c4q.HW09_03.enums;
 
 public enum Event {
     START_EVENT,

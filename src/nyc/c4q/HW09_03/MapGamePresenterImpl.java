@@ -1,8 +1,8 @@
 package nyc.c4q.HW09_03;
 
 import com.sun.istack.internal.NotNull;
-import nyc.c4q.HW09_03.util.Direction;
-import nyc.c4q.HW09_03.util.Event;
+import nyc.c4q.HW09_03.enums.Direction;
+import nyc.c4q.HW09_03.enums.Event;
 
 public class MapGamePresenterImpl implements BaseMVP.MapGamePresenter {
     private boolean gameEnded = false;

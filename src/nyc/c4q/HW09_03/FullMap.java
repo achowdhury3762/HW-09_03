@@ -1,6 +1,6 @@
 package nyc.c4q.HW09_03;
 
-import nyc.c4q.HW09_03.util.Event;
+import nyc.c4q.HW09_03.enums.Event;
 
 public class FullMap {
     private MapRoom start = new MapRoom(Event.START_EVENT);

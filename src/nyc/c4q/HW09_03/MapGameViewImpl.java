@@ -1,12 +1,11 @@
 package nyc.c4q.HW09_03;
 
-import nyc.c4q.HW09_03.util.Direction;
-import nyc.c4q.HW09_03.util.Event;
+import nyc.c4q.HW09_03.enums.Direction;
+import nyc.c4q.HW09_03.enums.Event;
 
 import java.util.Scanner;
-import java.util.jar.Pack200;
 
-import static nyc.c4q.HW09_03.util.Direction.*;
+import static nyc.c4q.HW09_03.enums.Direction.*;
 
 public class MapGameViewImpl implements BaseMVP.MapGameView {
     private BaseMVP.MapGamePresenter presenter;
@@ -27,6 +26,8 @@ public class MapGameViewImpl implements BaseMVP.MapGameView {
     @Override
     public void showMapInvalid() {
         System.out.println("That direction is invalid");
+
+        promptDirection();
     }
 
     public void startGame(Scanner input) {
@@ -39,7 +40,7 @@ public class MapGameViewImpl implements BaseMVP.MapGameView {
     private void promptDirection() {
         String inputDirection = inputScanner.next();
         Direction direction = convertToDirection(inputDirection);
-        while(direction == null) {
+        while (direction == null) {
             System.out.println("Enter a valid direction please");
             inputDirection = inputScanner.next();
             direction = convertToDirection(inputDirection);
@@ -49,7 +50,7 @@ public class MapGameViewImpl implements BaseMVP.MapGameView {
 
     private Direction convertToDirection(String direction) {
         direction = direction.toLowerCase();
-        switch(direction) {
+        switch (direction) {
             case "up":
                 return UP;
             case "left":

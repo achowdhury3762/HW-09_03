@@ -1,10 +1,7 @@
 package nyc.c4q.HW09_03;
 
 import com.sun.istack.internal.NotNull;
-import nyc.c4q.HW09_03.util.Direction;
-import nyc.c4q.HW09_03.util.Event;
-
-import java.util.Optional;
+import nyc.c4q.HW09_03.enums.Direction;
 
 public class MapGameModelImpl implements BaseMVP.MapGameModel {
     private MapRoom currentMapPosition;
@@ -18,7 +15,8 @@ public class MapGameModelImpl implements BaseMVP.MapGameModel {
         currentMapPosition = map.getStartPosition();
     }
 
-    @Override @NotNull
+    @Override
+    @NotNull
     public void takeTurn(Direction direction) {
         MapRoom currentMapPositionHolder = currentMapPosition;
 

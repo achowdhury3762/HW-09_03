@@ -1,9 +1,7 @@
 package nyc.c4q.HW09_03;
 
-import nyc.c4q.HW09_03.util.Direction;
-import nyc.c4q.HW09_03.util.Event;
-
-import java.util.Optional;
+import nyc.c4q.HW09_03.enums.Direction;
+import nyc.c4q.HW09_03.enums.Event;
 
 public class BaseMVP {
     interface MapGameView {
@@ -20,7 +18,7 @@ public class BaseMVP {
         void invalidDirection();
 
         void receiveEvent(Event event);
-        
+
         void receiveEndGameEvent(Event event);
     }
 
