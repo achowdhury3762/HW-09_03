@@ -1,167 +1,164 @@
 package nyc.c4q.HW09_03;
 
-/**
- * Created by HW09_03 on 9/2/16.
- */
+import nyc.c4q.HW09_03.util.Event;
+
 public class FullMap {
-    //Dont have to use new operator???
-    MapSquare start = new MapSquare(Events.START_EVENT);
-    int squareCount;
-    MapSquare positionHolder = start;
+    private MapRoom start = new MapRoom(Event.START_EVENT);
+    private MapRoom positionInMap = start;
+    private int roomCount;
 
-
-    public Events getEvent(){
-        return start.getEvent();
-    }
-
-    public void createRight(){
-        if(start.right!=null){
+    public void createRight() {
+        if (start.right != null) {
             System.out.println("There is already something there!");
         }
-        MapSquare right = new MapSquare();
+        MapRoom right = new MapRoom();
         start.right = right;
         right.left = start;
-        start.right.event = Events.NOTHING;
-        squareCount++;
+        start.right.event = Event.NOTHING;
+        roomCount++;
     }
 
-    public void createLeft(){
-        if(start.left!=null){
+    public void createLeft() {
+        if (start.left != null) {
             System.out.println("There is already something there!");
         }
-        MapSquare left = new MapSquare();
+        MapRoom left = new MapRoom();
         start.left = left;
         left.right = start;
-        start.left.event = Events.NOTHING;
-        squareCount++;
+        start.left.event = Event.NOTHING;
+        roomCount++;
     }
 
-    public void createUp(){
-        if(start.up!=null){
+    public void createUp() {
+        if (start.up != null) {
             System.out.println("There is already something there!");
         }
-        MapSquare up = new MapSquare();
+        MapRoom up = new MapRoom();
         start.up = up;
         up.down = start;
-        start.up.event = Events.NOTHING;
-        squareCount++;
+        start.up.event = Event.NOTHING;
+        roomCount++;
     }
 
-    public void createDown(){
-        if(start.down!=null){
+    public void createDown() {
+        if (start.down != null) {
             System.out.println("There is already something there!");
         }
-        MapSquare down = new MapSquare();
+        MapRoom down = new MapRoom();
         start.down = down;
         down.up = start;
-        start.down.event = Events.NOTHING;
-        squareCount++;
+        start.down.event = Event.NOTHING;
+        roomCount++;
     }
 
-    public void createRight(Events event){
-        if(start.right!=null){
+    public void createRight(Event event) {
+        if (start.right != null) {
             System.out.println("There is already something there!");
         }
-        MapSquare right = new MapSquare();
+        MapRoom right = new MapRoom();
         start.right = right;
         right.left = start;
         start.right.event = event;
-        squareCount++;
+        roomCount++;
     }
 
-    public void createLeft(Events event){
-        if(start.left!=null){
+    public void createLeft(Event event) {
+        if (start.left != null) {
             System.out.println("There is already something there!");
         }
-        MapSquare left = new MapSquare();
+        MapRoom left = new MapRoom();
         start.left = left;
         left.right = start;
         start.left.event = event;
-        squareCount++;
+        roomCount++;
     }
 
-    public void createUp(Events event){
-        if(start.up!=null){
+    public void createUp(Event event) {
+        if (start.up != null) {
             System.out.println("There is already something there!");
         }
-        MapSquare up = new MapSquare();
+        MapRoom up = new MapRoom();
         start.up = up;
         up.down = start;
         start.up.event = event;
-        squareCount++;
+        roomCount++;
     }
 
-    public void createDown(Events event){
-        if(start.down!=null){
+    public void createDown(Event event) {
+        if (start.down != null) {
             System.out.println("There is already something there!");
         }
-        MapSquare down = new MapSquare();
+        MapRoom down = new MapRoom();
         start.down = down;
         down.up = start;
         start.down.event = event;
-        squareCount++;
+        roomCount++;
     }
 
 
-    public void goDown(){
-        if(start.down == null){
+    public void goDown() {
+        if (start.down == null) {
             System.out.println("\u001B[1m That isnt a spot.. You fall into an abyss");
-            start = positionHolder;
+            start = positionInMap;
             return;
         }
         start = start.down;
     }
 
-    public void goLeft(){
-        if(start.left == null){
+    public void goLeft() {
+        if (start.left == null) {
             System.out.println("\u001B[1m That isnt a spot.. You fall into an abyss");
-            start = positionHolder;
+            start = positionInMap;
             return;
         }
         start = start.left;
     }
 
-    public void goRight(){
-        if(start.right == null){
+    public void goRight() {
+        if (start.right == null) {
             System.out.println("\u001B[1m That isnt a spot.. You fall into an abyss");
-            start = positionHolder;
+            start = positionInMap;
             return;
         }
         start = start.right;
     }
 
-    public void goUp(){
-        if(start.up == null){
+    public void goUp() {
+        if (start.up == null) {
             System.out.println("\u001B[1m That isnt a spot.. You fall into an abyss");
-            start = positionHolder;
+            start = positionInMap;
             return;
         }
         start = start.up;
     }
 
-    public void createMap(){
-        createRight(Events.WHIRLWIND_EVENT);
+    public MapRoom getStartPosition() {
+        return positionInMap;
+    }
+
+    public void createRandomMap() {
+        createRight(Event.WHIRLWIND_EVENT);
         goRight();
-        createUp(Events.KEY);
+        createUp(Event.KEY);
         goUp();
-        createRight(Events.LOST_CHILD);
-        start = positionHolder;
+        createRight(Event.LOST_CHILD);
+        start = positionInMap;
         goRight();
-        for(int i=0; i<6; i++){
+        for (int i = 0; i < 6; i++) {
             createRight();
             goRight();
         }
-        createDown(Events.OUTCOME_EVENT);
-        start = positionHolder;
+        createDown(Event.OUTCOME_EVENT);
+        start = positionInMap;
         goRight();
-        createDown(Events.DRUG_DEALER);
+        createDown(Event.DRUG_DEALER);
         goDown();
-        createRight(Events.OGRE);
+        createRight(Event.OGRE);
         goRight();
-        createRight(Events.GARDEN);
+        createRight(Event.GARDEN);
         goRight();
-        createRight(Events.HOMELESS_GUY);
+        createRight(Event.HOMELESS_GUY);
         goRight();
-        start = positionHolder;
+        start = positionInMap;
     }
 }

@@ -1,9 +1,6 @@
-package nyc.c4q.HW09_03;
+package nyc.c4q.HW09_03.util;
 
-/**
- * Created by HW09_03 on 9/2/16.
- */
-public enum Events {
+public enum Event {
     START_EVENT,
     WHIRLWIND_EVENT,
     OUTCOME_EVENT,
@@ -13,7 +10,5 @@ public enum Events {
     DRUG_DEALER,
     HOMELESS_GUY,
     GARDEN,
-    NOTHING;
-
-
+    NOTHING
 }
